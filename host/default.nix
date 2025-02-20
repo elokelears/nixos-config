@@ -38,6 +38,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
   # Enable the X11 windowing system and configure the X11 keyboard layout.
   services.xserver.enable = true;
   services.xserver.xkb = {
