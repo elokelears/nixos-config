@@ -9,18 +9,18 @@
     #};
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, ... }@inputs: 
   let
     system = "x86_64-linux";
     hostname = "NixOS";
-    username = "elokelears";
-    stateVersion = "24.11";
+    #username = "elokelears";
+    #stateVersion = "24.11";
 
   in {
     nixosConfigurations = {
       ${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit hostname username stateVersion ; };
+        #specialArgs = { inherit hostname username stateVersion ; };
         modules = [
           ./host
           #home-manager.nixosModules.home-manager

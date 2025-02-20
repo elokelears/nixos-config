@@ -1,4 +1,4 @@
-{ pkgs, hostname, stateVersion, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -11,13 +11,13 @@
   # The basic system configuration.
 
   # BootLoader
-  bboot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable networking
   networking = {
-    hostName = hostname;
-    networkManager.enable = true;
+    hostName = "NixOS";
+    networkmanager.enable = true;
   };
 
   # Set up the time zone.
@@ -80,5 +80,5 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # State version
-  system.stateVersion = stateVersion;
+  system.stateVersion = "24.11";
 }
