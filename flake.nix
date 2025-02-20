@@ -17,7 +17,7 @@
 
   in {
     nixosConfigurations = {
-      intel = nixpkgs.lib.nixosSystem {
+      NixOS = nixpkgs.lib.nixosSystem {
         inherit system;
         #specialArgs = { inherit hostname username stateVersion ; };
         modules = [

@@ -6,6 +6,7 @@
     ./dae
     ./firefox
     ./zsh
+    ./nil
   ];
 
   # The basic system configuration.
