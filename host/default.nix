@@ -1,8 +1,11 @@
-{ pkgs, hostname, ... }:
+{ pkgs, hostname, stateVersion, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
+    ./dae
+    ./firefox
+    ./zsh
   ];
 
   # The basic system configuration.
@@ -75,4 +78,7 @@
 
   # Enable the feature flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # State version
+  system.stateVersion = stateVersion;
 }
