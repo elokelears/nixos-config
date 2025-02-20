@@ -15,13 +15,12 @@
     hostname = "NixOS";
     username = "elokelears";
     stateVersion = "24.11";
-    pkgs = nixpkgs.legacyPackages.${system};
 
   in {
     nixosConfigurations = {
       ${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit hostname username stateVersion pkgs; };
+        specialArgs = { inherit hostname username stateVersion ; };
         modules = [
           ./host
           #home-manager.nixosModules.home-manager
