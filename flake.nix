@@ -3,13 +3,18 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    
+    stylix.url = "github:danth/stylix";
+    
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
+  outputs = {  nixpkgs, home-manager, stylix, ... }: 
   let
     system = "x86_64-linux";
     username = "elokelears";
@@ -26,12 +31,13 @@
         inherit system;
         specialArgs = { inherit pkgs username stateVersion ; };
         modules = [
+          stylix.nixosModules.stylix
           ./host
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
+            home-manager.backupFileExtension = "bkp";
             home-manager.useUserPackages = true;
-            home-manager.user.${username} = home;
+            home-manager.users.${username} = home;
           }
         ];
       };

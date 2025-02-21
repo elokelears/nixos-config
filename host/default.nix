@@ -7,6 +7,7 @@
     ./firefox
     ./zsh
     ./nil
+    ./stylix
   ];
 
   # The basic system configuration.
@@ -50,7 +51,7 @@
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -66,7 +67,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Define a user account.
   users.users.elokelears = {

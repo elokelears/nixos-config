@@ -7,9 +7,4 @@
     package = pkgs.firefox;
   };
 
-  # Install Git and VSCode
-  environment.systemPackages = with pkgs; [
-    git
-    vscode
-  ];
 }

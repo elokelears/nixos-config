@@ -1,23 +1,26 @@
 { pkgs, ... }:
 
-{
+{ 
+  fonts.fontconfig.enable = true;
   stylix = {
     enable = true;
     image = ./wallpaper.jpg;
-    polarity = "dark";
+    polarity = "dark";  
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+
     fonts = {
       serif = {
-        package = pkgs.noto-fonts-cjk-sans;
-        name = "Noto Sans CJK SC";
-      };
-
-      sansSerif = {
         package = pkgs.noto-fonts-cjk-serif;
         name = "Noto Serif CJK SC";
       };
 
+      sansSerif = {
+        package = pkgs.noto-fonts-cjk-sans;
+        name = "Noto Sans CJK SC";
+      };
+
       monospace = {
-        package = pkgs.nerd-fonts-comic-shanns-mono;
+        package = pkgs.nerd-fonts.comic-shanns-mono;
         name = "Comic Shanns Mono";
       };
 
