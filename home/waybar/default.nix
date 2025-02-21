@@ -4,8 +4,9 @@
   programs.waybar = {
     enable = true;
     package = pkgs.waybar;
-    settings = {
-      mainBar = import ./config.nix;
-    };
+  };
+
+  xdg.configFile = {
+    "waybar/config".source = ./config.jsonc;
   };
 }
