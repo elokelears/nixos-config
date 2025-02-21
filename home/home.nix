@@ -26,7 +26,7 @@
     ./gcc
     ./kitty
     ./waybar
-    ./hyprland
+    ./hypr
     ./fuzzel
   ];
 }

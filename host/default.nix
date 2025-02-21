@@ -11,6 +11,7 @@
     ./stylix
     ./fcitx5-rime
     ./hyprland
+    ./driver
   ];
 
   # The basic system configuration.
