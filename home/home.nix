@@ -25,5 +25,7 @@
     ./neovim
     ./gcc
     ./kitty
+    ./waybar
+    ./hyprland
   ];
 }

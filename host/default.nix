@@ -10,6 +10,7 @@
     ./fonts
     ./stylix
     ./fcitx5-rime
+    ./hyprland
   ];
 
   # The basic system configuration.
