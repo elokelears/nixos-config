@@ -8,6 +8,7 @@
     ./zsh
     ./nil
     ./stylix
+    ./fonts
   ];
 
   # The basic system configuration.

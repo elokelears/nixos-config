@@ -2,7 +2,7 @@
 
 {
   fonts = {
-    package = with pkgs; [
+    packages = with pkgs; [
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       nerd-fonts.comic-shanns-mono
