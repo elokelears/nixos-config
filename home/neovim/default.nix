@@ -5,15 +5,7 @@
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
-
   };
 
-  xdg = {
-    enable = true;
-    configFile = {
-      "nvim/init.lua" = {
-      source = ./init.lua;
-      };
-    };
-  };
+  
 }

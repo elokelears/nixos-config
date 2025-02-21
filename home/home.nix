@@ -24,5 +24,6 @@
     ./ripgrep
     ./neovim
     ./gcc
+    ./kitty
   ];
 }
