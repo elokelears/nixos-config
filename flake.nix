@@ -9,12 +9,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    
     stylix.url = "github:danth/stylix";
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
   };
 
-  outputs = {  nixpkgs, home-manager, stylix, ... }: 
+  outputs = {  nixpkgs, home-manager, stylix, nur, ... }: 
   let
     system = "x86_64-linux";
     username = "elokelears";
@@ -34,8 +38,9 @@
           stylix.nixosModules.stylix
           ./host
           home-manager.nixosModules.home-manager
+          nur.modules.nixos.default
           {
-            home-manager.backupFileExtension = "bkp";
+            home-manager.backupFileExtension = "backup";
             home-manager.useUserPackages = true;
             home-manager.users.${username} = home;
           }

@@ -8,7 +8,9 @@
         fcitx5-configtool
         fcitx5-gtk
         kdePackages.fcitx5-qt
-        fcitx5-rime
+        (fcitx5-rime.override {
+          rimeDataPkgs = [ nur.repos.definfo.rime-ice ];
+        })
       ];
   };
 }
