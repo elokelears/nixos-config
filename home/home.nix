@@ -1,4 +1,4 @@
-{ pkgs, username, stateVersion,  ... }:
+{ username, stateVersion,  ... }:
 
 {
   home.username = username;
@@ -9,7 +9,15 @@
 
   programs.home-manager.enable = true;
 
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnsupportedSystem = true;
+    };
+  };
+
   imports = [
-    
+    ./git
+    ./vscode
   ];
 }
