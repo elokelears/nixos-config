@@ -5,6 +5,7 @@
     enable = true;
     package = pkgs.hyprland;
     extraConfig = ''
+      monitor = DP-1,3840x2160,auto,2
       $mainMod = SUPER
       bind = $mainMod, return, exec, kitty
       bind = $mainMod, Q, killactive,
