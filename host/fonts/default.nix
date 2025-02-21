@@ -14,7 +14,7 @@
       enable = true;
       defaultFonts = {
         emoji = [ "Noto Color Emoji" ];
-        monospace = [ "Comic Shanns Mono" ];
+        monospace = [ "ComicShannsMono Nerd Font" ];
         sansSerif = [ "Noto Sans CJK SC" ];
         serif = [ "Noto Serif CJK SC" ];
       };

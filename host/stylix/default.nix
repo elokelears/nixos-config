@@ -21,7 +21,7 @@
 
       monospace = {
         package = pkgs.nerd-fonts.comic-shanns-mono;
-        name = "Comic Shanns Mono";
+        name = "ComicShannsMono Nerd Font";
       };
 
       emoji = {
