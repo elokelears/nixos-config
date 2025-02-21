@@ -29,7 +29,7 @@
     nixosConfigurations = {
       NixOS = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit pkgs username stateVersion ; };
+        specialArgs = { inherit  username stateVersion ; };
         modules = [
           stylix.nixosModules.stylix
           ./host

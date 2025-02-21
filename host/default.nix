@@ -7,7 +7,6 @@
     ./firefox
     ./zsh
     ./nil
-    ./stylix
     ./fonts
   ];
 
