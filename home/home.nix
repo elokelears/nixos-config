@@ -27,5 +27,6 @@
     ./kitty
     ./waybar
     ./hyprland
+    ./fuzzel
   ];
 }
