@@ -10,7 +10,6 @@
     ./fonts
     ./stylix
     ./fcitx5-rime
-    ./jetbrains
   ];
 
   # The basic system configuration.

@@ -19,5 +19,10 @@
   imports = [
     ./git
     ./vscode
+    ./jetbrains
+    ./make
+    ./ripgrep
+    ./neovim
+    ./gcc
   ];
 }
