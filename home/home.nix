@@ -29,5 +29,6 @@
     ./hypr
     ./fuzzel
     ./rofi
+    ./stylix
   ];
 }
