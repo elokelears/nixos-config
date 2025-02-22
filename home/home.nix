@@ -28,5 +28,6 @@
     ./waybar
     ./hypr
     ./fuzzel
+    ./rofi
   ];
 }
