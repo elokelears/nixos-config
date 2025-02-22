@@ -1,32 +1,13 @@
 {
   "layer": "top",
   "position": "top",
-  "modules-left": [
-    "custom/logo",
-    "clock",
-    "disk",
-    "memory",
-    "cpu",
-    "temperature",
-    "custom/powerDraw",
-    "hyprland/window"
-  ],
-  "modules-center": ["hyprland/workspaces"],
-  "modules-right": [
-    "tray",
-    "custom/clipboard",
-    "backlight",
-    "idle_inhibitor",
-    "custom/colorpicker",
-    "bluetooth",
-    "pulseaudio",
-    "network",
-    "battery"
-  ],
+  "modules-left": ["custom/logo", "hyprland/workspaces", "clock"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": [],
   "reload_style_on_change": true,
 
   "custom/logo": {
-    "format": " 󰬕󰬐󰬟",
+    "format": " ",
     "tooltip": false
   },
 
@@ -36,21 +17,29 @@
       "1": "",
       "2": "",
       "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
       "active": "",
       "default": ""
     },
     "persistent-workspaces": {
-      "*": [2, 3, 4, 5, 6]
+      "*": [2, 3]
     },
 
-    "idle_inhibitor": {
-      "format": "<span font='12'>{icon} </span>",
-      "format-icons": {
-        "activated": "",
-        "deactivated": ""
+    "clock": {
+      "interval": 60,
+      "format": "{:%H}", // 仅显示小时（24小时制）
+      "tooltip": true,
+      "tooltip-format": "📅 <b>{:%Y-%m-%d}</b>\n{calendar}",
+      "calendar": {
+        "mode": "month",
+        "mode-mon-col": 3,
+        "weeks-pos": "right",
+        "on-scroll": 1,
+        "on-click-right": "mode",
+        "format": {
+          "months": "<span color='#ffd866'><b>{:%B %Y}</b></span>",
+          "days": "<span color='#ab8548'>{:%a}</span>",
+          "today": "<span background='#363646'><u>{}</u></span>"
+        }
       }
     }
   }
