@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./dae
@@ -19,6 +17,9 @@
   # BootLoader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Enable the wshowkeys program
+  programs.wshowkeys.enable = true;
 
   # Enable networking
   networking = {
@@ -79,14 +80,14 @@
     description = "elokelears";
     home = "/home/elokelears";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # Enable the feature flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # State version
   system.stateVersion = "24.11";
