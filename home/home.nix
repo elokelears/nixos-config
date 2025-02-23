@@ -1,6 +1,8 @@
-{ username, stateVersion,  ... }:
-
 {
+  username,
+  stateVersion,
+  ...
+}: {
   home.username = username;
 
   home.homeDirectory = "/home/${username}";
@@ -31,4 +33,16 @@
     ./rofi
     ./stylix
   ];
+
+  # let electron support wayland
+  xdg.configFile = {
+    "electron-flags.conf".text = ''
+      --enable-features=WaylandWindowDecorations
+      --ozone-platform-hint=auto
+    '';
+    "electron13-flags.conf".text = ''
+      --enable-features=UseOzonePlatform
+      --ozone-platform=wayland
+    '';
+  };
 }

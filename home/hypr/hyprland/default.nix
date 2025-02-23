@@ -1,4 +1,7 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  rofiThemePath =
+    ./style-1.rasi;
+in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
@@ -19,7 +22,7 @@
       $mainMod = SUPER
       bind = $mainMod, return, exec, kitty
       bind = $mainMod, Q, killactive,
-      bind = $mainMod, tab, exec, fuzzel
+      bind = $mainMod, tab, exec, rofi -show drun -theme ${rofiThemePath}
 
       # Move focus with mainMod + arrow keys
       # Changed to vim binding
@@ -59,6 +62,8 @@
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
+
+
 
 
 
