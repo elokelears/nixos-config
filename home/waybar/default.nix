@@ -284,6 +284,8 @@
 
   home.packages = with pkgs; [
     pango
+    hyprpicker
+    wl-clipboard
   ];
   programs.cava = {
     enable = true;
