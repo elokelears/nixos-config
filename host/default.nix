@@ -50,6 +50,7 @@
 
   # Enable the X11 windowing system and configure the X11 keyboard layout.
   services.xserver.enable = true;
+
   services.xserver.xkb = {
     layout = "us";
     variant = "";

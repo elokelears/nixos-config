@@ -210,6 +210,7 @@
         background-color: transparent;
         box-shadow: none;
       }
+
       #battery {
           background: #${config.lib.stylix.colors.base0F};
           /* background: linear-gradient(118deg, #${config.lib.stylix.colors.base07} 0%, #${config.lib.stylix.colors.base0F} 25%, #${config.lib.stylix.colors.base07} 50%, #${config.lib.stylix.colors.base0F} 75%, #${config.lib.stylix.colors.base07} 100%); */
@@ -286,6 +287,7 @@
     pango
     hyprpicker
     wl-clipboard
+    htop
   ];
   programs.cava = {
     enable = true;

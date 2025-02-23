@@ -13,6 +13,16 @@ in {
 
       monitor = DP-1,3840x2160,auto,2
 
+      ###########
+      ### env ###
+      ###########
+
+      # electron use wayland
+      env = ELECTRON_OZONE_PLATFORM_HINT,wayland
+
+      # nixos use wayland for default wm
+      env = NIXOS_OZONE_WL,1
+
       ##################
       ### Auto Start ###
       ##################
