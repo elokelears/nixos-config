@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
@@ -13,10 +11,10 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-        emoji = [ "Noto Color Emoji" ];
-        monospace = [ "ComicShannsMono Nerd Font" ];
-        sansSerif = [ "Noto Sans CJK SC" ];
-        serif = [ "Noto Serif CJK SC" ];
+        emoji = ["Noto Color Emoji"];
+        monospace = ["ComicShannsMono Nerd Font"];
+        sansSerif = ["Noto Sans CJK SC"];
+        serif = ["Noto Serif CJK SC"];
       };
     };
   };

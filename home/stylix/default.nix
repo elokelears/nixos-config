@@ -3,8 +3,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ../../wallpaper.jpg;
-    #base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    image = ./wallpaper.jpg;
 
     fonts = {
       serif = {
