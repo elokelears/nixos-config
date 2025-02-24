@@ -24,7 +24,6 @@
   # Enable networking
   networking = {
     hostName = "NixOS";
-    networkmanager.enable = true;
   };
 
   # Set up the time zone.

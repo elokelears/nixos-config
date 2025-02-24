@@ -2,7 +2,10 @@
   config,
   pkgs,
   ...
-}: {
+}
+: let
+  scriptPath = ./scripts/system-monitor.sh;
+in {
   programs.waybar = {
     enable = true;
     package = pkgs.waybar;
@@ -15,7 +18,6 @@
         "modules-left" = [
           "hyprland/workspaces"
           "clock"
-          "memory"
           "custom/sysmonitor"
         ];
         "modules-center" = [];
@@ -34,19 +36,44 @@
           "format" = "{:%I:%M}";
           "max-length" = 25;
         };
-        "memory" = {
-          "interval" = 5;
-          "format" = "{}%";
-          "tooltip-format" = "{used}/{total}";
-          "on-click" = "kitty -e htop";
-        };
         "custom/sysmonitor" = {
           "interval" = 3;
-          "exec" = "${pkgs.bash}/bin/bash ./scripts/system-monitor.sh";
+          "exec" = "${pkgs.bash}/bin/bash ${scriptPath}";
           "return-type" = "json";
           "format" = "{}";
-          "class" = "system-monitor";
           "on-click" = "kitty -e htop";
+        };
+        "pulseaudio" = {
+          "on-click" = "pavucontrol";
+          "format" = "{icon} {volume}%";
+          "format-muted" = " Muted";
+          "format-icons" = {
+            "headphone" = "󱡏";
+            "hands-free" = "";
+            "headset" = "󱡏";
+            "phone" = "";
+            "portable" = "";
+            "car" = "";
+            "default" = [
+              "󰕿"
+              "󰖀"
+              "󰕾"
+              "󰕾"
+            ];
+          };
+        };
+        "network" = {
+          "interval" = 1;
+          "on-click" = "kitty -e nmtui";
+          "tooltip-format" = "Instant down speed:{bandwidthDownBits}";
+          "format-wifi" = "{icon} {signalStrength}%";
+          "format-ethernet" = "{icon}";
+          "format-disconnected" = "{icon}";
+          "format-icons" = {
+            "ethernet" = "";
+            "wifi" = "";
+            "disconnected" = "";
+          };
         };
       };
     };
@@ -59,7 +86,7 @@
         background-color: transparent;
       }
       #workspaces{
-        background-color: rgba(0, 0, 0, 0.116);
+        background-color: transparent;
         margin-top: 5px;
         margin-bottom: 5px;
         margin-right: 10px;
@@ -98,6 +125,17 @@
           border-radius: 20px;
           background-size: 200% 200%;
           animation: gradient_rv 3s linear infinite;
+      }
+      #pulseaudio,
+      #network,
+      #custom-sysmonitor {
+        background-color: #${config.lib.stylix.colors.base0E};
+        color: #${config.lib.stylix.colors.base00};
+        border-radius: 20px;
+        padding: 4 10px;
+        margin: 5px 10px;
+        font-weight: bold;
+        box-shadow: 1px 2px 2px #101010;
       }
 
 
@@ -147,6 +185,9 @@
     hyprpicker
     wl-clipboard
     htop
+    mpc-qt
+    pavucontrol
+    kdePackages.networkmanager-qt
   ];
   programs.cava = {
     enable = true;
