@@ -43,13 +43,52 @@ in {
           "format" = "{}";
           "on-click" = "kitty -e htop";
         };
+        "backlight" = {
+          "interval" = 2;
+          "align" = 0;
+          "format-icons" = [" " " " " " "󰃝 " "󰃞 " "󰃟 " "󰃠 "];
+          "format" = "{icon}";
+          "tooltrip-format" = "backlight {percent}%";
+          "icon-size" = 10;
+        };
+        "battery" = {
+          "align" = 0;
+          "rotate" = 0;
+          "full-at" = 100;
+          "design-capacity" = false;
+          "interval" = 5;
+          "states" = {
+            "good" = 95;
+            "warning" = 30;
+            "critical" = 15;
+          };
+          "format" = "{icon} {capacity}%";
+          "format-charging" = "{capacity}%";
+          "format-plugged" = "󱘖 {capacity}%";
+          "format-alt" = "{icon} {time}";
+          "format-full" = "{icon} Full";
+          "format-icons" = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+          "format-time" = "{H}h {M}min";
+          "tooltip" = true;
+          "tooltip-format" = "{timeTo} {power}w";
+          "on-click" = "";
+        };
+        "idle_inhibitor" = {
+          "format" = "{icon}";
+          "format-icons" = {
+            "activated" = " ";
+            "deactivated" = " ";
+          };
+        };
         "pulseaudio" = {
-          "on-click" = "pavucontrol";
+          "on-click" = "pavucontrol -t 3";
+          "on-click-right" = "";
           "format" = "{icon} {volume}%";
-          "format-muted" = " Muted";
+          "format-bluetooth" = "{icon} 󰂰 {volume}%";
+          "format-muted" = "󰖁";
           "format-icons" = {
             "headphone" = "󱡏";
-            "hands-free" = "";
+            "hands-free" = "";
             "headset" = "󱡏";
             "phone" = "";
             "portable" = "";
@@ -65,15 +104,17 @@ in {
         "network" = {
           "interval" = 1;
           "on-click" = "kitty -e nmtui";
-          "tooltip-format" = "Instant down speed:{bandwidthDownBits}";
+          "tooltip-format" = "{ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}";
           "format-wifi" = "{icon} {signalStrength}%";
-          "format-ethernet" = "{icon}";
-          "format-disconnected" = "{icon}";
-          "format-icons" = {
-            "ethernet" = "";
-            "wifi" = "";
-            "disconnected" = "";
-          };
+          "format-ethernet" = "󰌘";
+          "format-disconnected" = "󰌙";
+          "format-icons" = [
+            "󰤯"
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
         };
       };
     };
@@ -187,7 +228,7 @@ in {
     htop
     mpc-qt
     pavucontrol
-    kdePackages.networkmanager-qt
+    blueman
   ];
   programs.cava = {
     enable = true;
