@@ -30,9 +30,9 @@
     ./kitty
     ./waybar
     ./hypr
-    ./fuzzel
     ./rofi
     ./stylix
+    ./wlogout
   ];
 
   home.packages = with pkgs; [

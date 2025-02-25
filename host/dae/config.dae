@@ -106,7 +106,7 @@ global {
 }
 
 subscription {
-    my_sub: 'https://submit.xz61.cn:20443/api/v1/client/subscribe?token=840b99a967c875e4416d862233ac17cb'
+    my_sub: 'https://fcsblka.fcsubcn.cc:2096/api/v1/client/subscribe?token=641c7af6feb06936d7f086217488b301'
 }
 
 # See https://github.com/daeuniverse/dae/blob/main/docs/en/configuration/dns.md for full examples.
