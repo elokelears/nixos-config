@@ -22,6 +22,7 @@ in {
         ];
         "modules-center" = [];
         "modules-right" = [
+          "custom/playerctl"
           "network"
           "pulseaudio"
           "battery"
@@ -31,9 +32,9 @@ in {
           "format-active" = "{icon}";
         };
         "clock" = {
-          "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          "interval" = 60;
-          "format" = "{:%I:%M}";
+          "tooltip" = false;
+          "interval" = 1;
+          "format" = "{:%I:%M:%S}";
           "max-length" = 25;
         };
         "custom/sysmonitor" = {
@@ -101,6 +102,12 @@ in {
             ];
           };
         };
+        "pulseaudio#microphone" = {
+          "format" = "{format_source}";
+          "format-source" = " {volume}%";
+          "format-source-muted" = "";
+          "on-click" = "pavucontrol -t 4";
+        };
         "network" = {
           "interval" = 1;
           "on-click" = "kitty -e nmtui";
@@ -115,6 +122,57 @@ in {
             "󰤥"
             "󰤨"
           ];
+        };
+        "bluetooth" = {
+          "format" = "";
+          "format-connected" = "󰂱 {num_connections}";
+          "format-disabled" = "󰂲";
+          "tooltip-format" = " {device_alias}";
+          "tooltip-format-connected" = "{device_enumerate}";
+          "tooltip-format-enumerate-connected" = " {device_alias} 󰂄{device_battery_percentage}%";
+          "tooltip" = true;
+          "on-click" = "blueman-manager";
+        };
+        "mpris" = {
+          "interval" = 10;
+          "format" = "{player_icon} ";
+          "format-paused" = "{status_icon} <i>{dynamic}</i>";
+          "on-click-middle" = "playerctl play-pause";
+          "on-click" = "playerctl previous";
+          "on-click-right" = "playerctl next";
+          "player-icons" = {
+            "chromium" = "";
+            "default" = "";
+            "firefox" = "";
+            "mopidy" = "";
+            "mpv" = "󰐹";
+            "spotify" = "";
+            "vlc" = "󰕼";
+          };
+          "status-icons" = {
+            "paused" = "󰐎";
+            "playing" = "";
+            "stopped" = "";
+          };
+          "max-length" = 30;
+        };
+        "tray" = {
+          "icon-size" = 15;
+          "spacing" = 8;
+        };
+        "custom/playerctl" = {
+          "format" = "{icon}<span>{}</span>";
+          "return-type" = "json";
+          "format-icons" = {
+            "playing" = "";
+            "stopped" = "";
+            "paused" = "⏸";
+          };
+          "max-length" = 35;
+          "exec" = "playerctl -a metadata --format '{\"text\": \"{{artist}} ~ {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+          "on-click-middle" = "playerctl play-pause";
+          "on-click" = "playerctl previous";
+          "on-click-right" = "playerctl next";
         };
       };
     };
@@ -229,7 +287,12 @@ in {
     mpc-qt
     pavucontrol
     blueman
+    playerctl
   ];
+  services.playerctld = {
+    enable = true;
+    package = pkgs.playerctl;
+  };
   programs.cava = {
     enable = true;
     package = pkgs.cava;

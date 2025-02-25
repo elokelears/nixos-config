@@ -33,6 +33,7 @@
     ./rofi
     ./stylix
     ./wlogout
+    ./wechat
   ];
 
   home.packages = with pkgs; [
