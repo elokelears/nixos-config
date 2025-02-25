@@ -3,6 +3,7 @@
     systemPackages = with pkgs; [
       nil
       alejandra
+      kdePackages.dolphin
     ];
   };
 }

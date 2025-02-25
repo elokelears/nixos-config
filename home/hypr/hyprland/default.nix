@@ -23,6 +23,9 @@ in {
       # nixos use wayland for default wm
       env = NIXOS_OZONE_WL,1
 
+      # gdk use wayland
+      # env = GDK_BACKEND,wayland
+
       ##################
       ### Auto Start ###
       ##################
