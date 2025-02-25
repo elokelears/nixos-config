@@ -5,6 +5,7 @@
 }
 : let
   scriptPath = ./scripts/system-monitor.sh;
+  volumeControl = ./scripts/volume-control-script.sh;
 in {
   programs.waybar = {
     enable = true;
@@ -20,23 +21,27 @@ in {
           "clock"
           "custom/sysmonitor"
         ];
-        "modules-center" = [];
+        "modules-center" = ["custom/cycle_wall"];
         "modules-right" = [
-          "custom/playerctl"
+          "tray"
+          "mpris"
           "network"
-          "pulseaudio"
+          "group/audio"
           "battery"
         ];
+
         "hyprland/workspaces" = {
           "format" = "{icon}";
           "format-active" = "{icon}";
         };
+
         "clock" = {
           "tooltip" = false;
           "interval" = 1;
           "format" = "{:%I:%M:%S}";
           "max-length" = 25;
         };
+
         "custom/sysmonitor" = {
           "interval" = 3;
           "exec" = "${pkgs.bash}/bin/bash ${scriptPath}";
@@ -44,6 +49,7 @@ in {
           "format" = "{}";
           "on-click" = "kitty -e htop";
         };
+
         "backlight" = {
           "interval" = 2;
           "align" = 0;
@@ -52,6 +58,7 @@ in {
           "tooltrip-format" = "backlight {percent}%";
           "icon-size" = 10;
         };
+
         "battery" = {
           "align" = 0;
           "rotate" = 0;
@@ -74,6 +81,7 @@ in {
           "tooltip-format" = "{timeTo} {power}w";
           "on-click" = "";
         };
+
         "idle_inhibitor" = {
           "format" = "{icon}";
           "format-icons" = {
@@ -81,9 +89,20 @@ in {
             "deactivated" = " ";
           };
         };
+
+        "group/audio" = {
+          "orientation" = "horizontal";
+          "modules" = [
+            "pulseaudio"
+            "pulseaudio#microphone"
+          ];
+        };
+
         "pulseaudio" = {
           "on-click" = "pavucontrol -t 3";
-          "on-click-right" = "";
+          "on-click-right" = "${volumeControl} mute";
+          "on-scroll-up" = "${volumeControl} up";
+          "on-scroll-down" = "${volumeControl} down";
           "format" = "{icon} {volume}%";
           "format-bluetooth" = "{icon} 󰂰 {volume}%";
           "format-muted" = "󰖁";
@@ -133,13 +152,16 @@ in {
           "tooltip" = true;
           "on-click" = "blueman-manager";
         };
+
         "mpris" = {
-          "interval" = 10;
-          "format" = "{player_icon} ";
+          "interval" = 1;
+          "format" = "{player_icon} {status_icon}<i>{dynamic}</i>";
           "format-paused" = "{status_icon} <i>{dynamic}</i>";
           "on-click-middle" = "playerctl play-pause";
           "on-click" = "playerctl previous";
           "on-click-right" = "playerctl next";
+          "on-scroll-up" = "${volumeControl} up";
+          "on-scroll-down" = "${volumeControl} down";
           "player-icons" = {
             "chromium" = "";
             "default" = "";
@@ -150,16 +172,18 @@ in {
             "vlc" = "󰕼";
           };
           "status-icons" = {
-            "paused" = "󰐎";
+            "paused" = "⏸";
             "playing" = "";
             "stopped" = "";
           };
           "max-length" = 30;
         };
+
         "tray" = {
           "icon-size" = 15;
           "spacing" = 8;
         };
+
         "custom/playerctl" = {
           "format" = "{icon}<span>{}</span>";
           "return-type" = "json";
@@ -173,6 +197,16 @@ in {
           "on-click-middle" = "playerctl play-pause";
           "on-click" = "playerctl previous";
           "on-click-right" = "playerctl next";
+          "on-scroll-up" = "${volumeControl} up";
+          "on-scroll-down" = "${volumeControl} down";
+        };
+
+        "custom/cycle_wall" = {
+          "format" = " ";
+          "exec" = "echo ; echo 󰸉 wallpaper select";
+          "on-click" = "";
+          "interval" = 86400;
+          "tooltip" = true;
         };
       };
     };
@@ -225,7 +259,6 @@ in {
           background-size: 200% 200%;
           animation: gradient_rv 3s linear infinite;
       }
-      #pulseaudio,
       #network,
       #custom-sysmonitor {
         background-color: #${config.lib.stylix.colors.base0E};
@@ -288,6 +321,7 @@ in {
     pavucontrol
     blueman
     playerctl
+    pulseaudioFull
   ];
   services.playerctld = {
     enable = true;

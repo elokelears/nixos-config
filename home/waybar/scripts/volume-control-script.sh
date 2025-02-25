@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # 音量调整的步进值（百分比）
-STEP=2
+STEP=1
 
 # 根据参数执行不同的操作
 case "$1" in
