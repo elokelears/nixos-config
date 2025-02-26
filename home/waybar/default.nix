@@ -361,6 +361,7 @@ in {
     playerctl
     pulseaudioFull
     yad
+    networkmanagerapplet
   ];
   services.playerctld = {
     enable = true;

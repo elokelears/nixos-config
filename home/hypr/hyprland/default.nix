@@ -23,6 +23,10 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
+    settings.exec-once = [
+      "fcitx5"
+      "waybar"
+    ];
     extraConfig = ''
 
       ################
@@ -51,8 +55,6 @@ in {
       ##################
       ### Auto Start ###
       ##################
-
-      exec-once = waybar & fcitx5
 
       $mainMod = SUPER
       bind = $mainMod, return, exec, kitty
