@@ -1,7 +1,25 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   rofiThemePath =
     ./style-1.rasi;
 in {
+  home.pointerCursor = {
+    name = lib.mkForce "Bibata-Modern-Ice";
+    package = lib.mkForce pkgs.bibata-cursors;
+    size = 32;
+    gtk.enable = true;
+    x11.enable = true;
+    x11.defaultCursor = lib.mkForce "Bibata-Modern-Ice";
+  };
+  gtk = {
+    enable = true;
+    cursorTheme.name = lib.mkForce "Bibata-Modern-Ice";
+    cursorTheme.size = 32;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
@@ -13,18 +31,22 @@ in {
 
       monitor = DP-1,3840x2160,auto,2
 
+      xwayland {
+        force_zero_scaling = true
+      }
+
       ###########
       ### env ###
       ###########
 
-      # electron use wayland
       env = ELECTRON_OZONE_PLATFORM_HINT,wayland
-
-      # nixos use wayland for default wm
       env = NIXOS_OZONE_WL,1
-
-      # gdk use wayland
-      # env = GDK_BACKEND,wayland
+      env = GDK_BACKEND,wayland
+      env = XCURSOR_THEME,Bibata-Modern-Ice
+      env = XCURSOR_SIZE,32
+      env = HYPRCURSOR_THEME,Bibata-Modern-Ice
+      env = HYPRCURSOR_SIZE,32
+      env = GDK_SCALE,2
 
       ##################
       ### Auto Start ###

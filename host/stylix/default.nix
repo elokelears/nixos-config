@@ -4,7 +4,11 @@
     enable = true;
     image = ../../wallpaper.png;
     polarity = "dark";
-    #base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    cursor = {
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
+      size = 32;
+    };
 
     fonts = {
       serif = {

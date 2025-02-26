@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+  <item label="update-system">
+    <action name="update-system"/>
+  </item>
+  <item label="color-picker">
+    <action name="color-picker"/>
+  </item>
+  <item label="screenshot">
+    <action name="screenshot"/>
+  </item>
+</menu>

@@ -17,6 +17,7 @@ in {
         "spacing" = 5;
         "margin-bottom" = -11;
         "modules-left" = [
+          "custom/nixos-menu"
           "hyprland/workspaces"
           "clock"
           "custom/sysmonitor"
@@ -29,6 +30,13 @@ in {
           "group/audio"
           "battery"
         ];
+
+        "custom/nixos-menu" = {
+          "format" = "<span font=\"26px\">󱄅</span>";
+          "tooltip" = false;
+          "menu" = "on-click";
+          "menu-file" = ./nixos-menu.xml;
+        };
 
         "hyprland/workspaces" = {
           "format" = "{icon}";
@@ -322,6 +330,7 @@ in {
     blueman
     playerctl
     pulseaudioFull
+    yad
   ];
   services.playerctld = {
     enable = true;

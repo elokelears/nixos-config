@@ -3,6 +3,5 @@
     ./hyprland
     ./hypridle
     ./hyprlock
-    ./hyprcursor
   ];
 }
