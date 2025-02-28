@@ -28,11 +28,6 @@
         </object>
 	  </child>
     <child>
-        <object class="GtkMenuItem" id="killapp">
-			<property name="label">  Kill an application</property>
-        </object>
-	  </child>
-    <child>
       <object class="GtkSeparatorMenuItem" id="delimiter1">
       <property name="visible">True</property>
       <property name="can_focus">False</property>

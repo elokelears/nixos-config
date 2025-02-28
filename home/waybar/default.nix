@@ -35,6 +35,11 @@ in {
           "tooltip" = false;
           "menu" = "on-click";
           "menu-file" = ./nixos-menu.xml;
+          "menu-actions" = {
+            "videodl" = ./scripts/video-download.sh;
+            "musicdl" = ./scripts/song-download.sh;
+            "colorpicker" = ./scripts/color-pick.sh
+          };
         };
 
         "hyprland/workspaces" = {

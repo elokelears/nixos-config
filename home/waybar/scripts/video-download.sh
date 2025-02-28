@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 if (yt-dlp -o '~/Videos/%(title)s.%(ext)s' $(wl-paste)); then
   hyprctl notify 5 4000 "rgb(0000ff)" " Video saved in ~/Videos"
 else
