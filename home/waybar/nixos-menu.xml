@@ -13,13 +13,13 @@
         </object>
 	  </child>
     <child>
-        <object class="GtkMenuItem" id="malarchive">
-			<property name="label">  Archive MyAnimeList</property>
+        <object class="GtkMenuItem" id="system-update">
+			<property name="label">  NixOS-Flake update</property>
         </object>
 	  </child>
     <child>
-        <object class="GtkMenuItem" id="emojisearch">
-			<property name="label">  Emoji Search (Fn + F12)</property>
+        <object class="GtkMenuItem" id="screenshot">
+			<property name="label">  Screenshot</property>
         </object>
 	  </child>
     <child>

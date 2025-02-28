@@ -38,7 +38,10 @@ in {
           "menu-actions" = {
             "videodl" = ./scripts/video-download.sh;
             "musicdl" = ./scripts/song-download.sh;
-            "colorpicker" = ./scripts/color-pick.sh
+            "colorpicker" = ./scripts/color-pick.sh;
+            "system-update" = ./scripts/update-system.sh;
+            "screenshot" = ./scripts/screenshot.sh;
+            "exit" = "wlogout -m 260px 70px";
           };
         };
 
@@ -488,6 +491,7 @@ in {
     networkmanagerapplet
     iwgtk
     yt-dlp
+    grimblast
   ];
   services.playerctld = {
     enable = true;
