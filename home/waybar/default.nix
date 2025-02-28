@@ -492,4 +492,10 @@ in {
     enable = true;
     package = pkgs.cava;
   };
+  programs.yt-dlp = {
+    enable = true;
+    package = pkgs.yt-dlp;
+    settings = {
+    };
+  };
 }
