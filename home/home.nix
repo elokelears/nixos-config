@@ -34,6 +34,7 @@
     ./stylix
     ./wlogout
     ./wechat
+    ./swaync
   ];
 
   home.packages = with pkgs; [

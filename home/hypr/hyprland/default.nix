@@ -9,7 +9,7 @@ in {
   home.pointerCursor = {
     name = lib.mkForce "Bibata-Modern-Ice";
     package = lib.mkForce pkgs.bibata-cursors;
-    size = 32;
+    size = 28;
     gtk.enable = true;
     x11.enable = true;
     x11.defaultCursor = lib.mkForce "Bibata-Modern-Ice";
@@ -17,7 +17,7 @@ in {
   gtk = {
     enable = true;
     cursorTheme.name = lib.mkForce "Bibata-Modern-Ice";
-    cursorTheme.size = 32;
+    cursorTheme.size = 28;
   };
 
   wayland.windowManager.hyprland = {
@@ -47,9 +47,9 @@ in {
       env = NIXOS_OZONE_WL,1
       env = GDK_BACKEND,wayland
       env = XCURSOR_THEME,Bibata-Modern-Ice
-      env = XCURSOR_SIZE,32
+      env = XCURSOR_SIZE,28
       env = HYPRCURSOR_THEME,Bibata-Modern-Ice
-      env = HYPRCURSOR_SIZE,32
+      env = HYPRCURSOR_SIZE,28
       env = GDK_SCALE,2
 
       ##################
