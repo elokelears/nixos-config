@@ -20,7 +20,7 @@ in {
           "hyprland/workspaces"
           "custom/sysmonitor"
         ];
-        "modules-center" = ["custom/nixos-menu" "custom/notification" "clock" "custom/cycle_wall" "idle_inhibitor"];
+        "modules-center" = ["custom/nixos-menu" "custom/notification" "clock" "idle_inhibitor"];
         "modules-right" = [
           "tray"
           "mpris"
@@ -31,7 +31,7 @@ in {
         ];
 
         "custom/nixos-menu" = {
-          "format" = "<span font=\"13px\">󱄅</span>";
+          "format" = "<span font=\"18px\">󱄅</span>";
           "tooltip" = false;
           "menu" = "on-click";
           "menu-file" = ./nixos-menu.xml;
@@ -39,8 +39,8 @@ in {
             "videodl" = ./scripts/video-download.sh;
             "musicdl" = ./scripts/song-download.sh;
             "colorpicker" = ./scripts/color-pick.sh;
-            "system-update" = ./scripts/update-system.sh;
             "screenshot" = ./scripts/screenshot.sh;
+            "changewallpaper" = ./scripts/select-wallpaper.sh;
             "exit" = "wlogout -m 260px 70px";
           };
         };
@@ -265,7 +265,7 @@ in {
       #workspaces{
         background-color: transparent;
         margin-top: 5px;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         margin-right: 10px;
         margin-left: 20px;
       }
@@ -295,7 +295,7 @@ in {
           text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
           color: #${config.lib.stylix.colors.base00};
           margin-top: 5px;
-          margin-bottom: 5px;
+          margin-bottom: 10px;
           margin-left: 10px;
           margin-right: 10px;
           box-shadow: 1px 2px 2px #101010;
@@ -312,7 +312,10 @@ in {
         color: #${config.lib.stylix.colors.base00};
         border-radius: 20px;
         padding: 4px 10px;
-        margin: 5px 10px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
         font-weight: bold;
         box-shadow: 1px 2px 2px #101010;
       }
@@ -322,7 +325,10 @@ in {
         color: #${config.lib.stylix.colors.base00};
         border-radius: 10px;
         padding: 4px 10px;
-        margin: 5px 10px;
+        margin-top: 5px;
+          margin-bottom: 10px;
+          margin-left: 10px;
+          margin-right: 10px;
         text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
         box-shadow: 1px 2px 2px #101010;
         background-size: 200% 200%;
@@ -334,7 +340,10 @@ in {
         color: #${config.lib.stylix.colors.base00};
         border-radius: 10px;
         padding: 4px 10px;
-        margin: 5px 10px;
+        margin-top: 5px;
+          margin-bottom: 10px;
+          margin-left: 10px;
+          margin-right: 10px;
         text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
         box-shadow: 1px 2px 2px #101010;
       }
@@ -344,7 +353,10 @@ in {
         color: #${config.lib.stylix.colors.base00};
         border-radius: 10px;
         padding: 4px 10px;
-        margin: 5px 10px;
+        margin-top: 5px;
+          margin-bottom: 10px;
+          margin-left: 10px;
+          margin-right: 10px;
         text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
         box-shadow: 1px 2px 2px #101010;
         background-size: 200% 200%;
@@ -357,7 +369,10 @@ in {
         color: #${config.lib.stylix.colors.base00};
         border-radius: 10px;
         padding: 4px 10px;
-        margin: 5px 10px;
+        margin-top: 5px;
+          margin-bottom: 10px;
+          margin-left: 10px;
+          margin-right: 10px;
         text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
         box-shadow: 1px 2px 2px #101010;
       }
@@ -367,7 +382,10 @@ in {
         color: #${config.lib.stylix.colors.base00};
         border-radius: 10px;
         padding: 4px 13px 4px 10px;
-        margin: 5px 10px;
+        margin-top: 5px;
+          margin-bottom: 10px;
+          margin-left: 10px;
+          margin-right: 10px;
         text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
         box-shadow: 1px 2px 2px #101010;
       }
@@ -383,7 +401,10 @@ in {
 
       #battery {
       padding: 4px 10px;
-        margin: 5px 10px;
+        margin-top: 5px;
+          margin-bottom: 10px;
+          margin-left: 10px;
+          margin-right: 10px;
         background: #${config.lib.stylix.colors.base0F};
       /* background: linear-gradient(118deg, #${config.lib.stylix.colors.base07} 0%, #${config.lib.stylix.colors.base0F} 25%, #${config.lib.stylix.colors.base07} 50%, #${config.lib.stylix.colors.base0F} 75%, #${config.lib.stylix.colors.base07} 100%); */
       /* background: linear-gradient(118deg, #${config.lib.stylix.colors.base07} 5%, #${config.lib.stylix.colors.base0F} 5%, #${config.lib.stylix.colors.base0F} 20%, #${config.lib.stylix.colors.base07} 20%, #${config.lib.stylix.colors.base07} 40%, #${config.lib.stylix.colors.base0F} 40%, #${config.lib.stylix.colors.base0F} 60%, #${config.lib.stylix.colors.base07} 60%, #${config.lib.stylix.colors.base07} 80%, #${config.lib.stylix.colors.base0F} 80%, #${config.lib.stylix.colors.base0F} 95%, #${config.lib.stylix.colors.base07} 95%);  */
@@ -447,7 +468,10 @@ in {
         background-image: radial-gradient(#${config.lib.stylix.colors.base0E}, #${config.lib.stylix.colors.base0D}, #${config.lib.stylix.colors.base0B});
         color: #${config.lib.stylix.colors.base00};
         padding: 4px 13px 4px 10px;
-        margin: 5px 10px;
+        margin-top: 5px;
+          margin-bottom: 10px;
+          margin-left: 10px;
+          margin-right: 10px;
         border-radius: 8px;
         background-size: 200% 300%;
         animation: gradient_rv 5s ease infinite;
@@ -486,12 +510,15 @@ in {
     pavucontrol
     blueman
     playerctl
+    brightnessctl
     pulseaudioFull
     yad
     networkmanagerapplet
     iwgtk
     yt-dlp
     grimblast
+    libnotify
+    imagemagick
   ];
   services.playerctld = {
     enable = true;

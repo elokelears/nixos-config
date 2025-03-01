@@ -29,11 +29,11 @@ esac
 
 # 获取当前音量以便在通知中显示
 VOLUME=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '[0-9]+(?=%)' | head -1)
-MUTED=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -q "yes" && echo "已静音" || echo "音量: ${VOLUME}%")
+MUTED=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -q "yes" && echo "muted" || echo "volume: ${VOLUME}%")
 
 # 使用通知显示当前音量状态（可选）
-#if command -v notify-send > /dev/null; then
-   # notify-send -t 800 -h string:x-canonical-private-synchronous:volume "音量控制" "$MUTED" -h int:value:"$VOLUME"
-#fi
+if command -v notify-send > /dev/null; then
+    notify-send -t 800 -h string:x-canonical-private-synchronous:volume "Volume control" "$MUTED" -h int:value:"$VOLUME"
+fi
 
 exit 0

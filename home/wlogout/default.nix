@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   programs.wlogout = {
     enable = true;
     package = pkgs.wlogout;
@@ -20,12 +25,6 @@
         action = "loginctl kill-session $XDG_SESSION_ID";
         text = "Logout";
         keybind = "e";
-      }
-      {
-        label = "hibernate";
-        action = "swaylock -f && systemctl hibernate";
-        text = "Hibernate";
-        keybind = "h";
       }
       {
         label = "lock";

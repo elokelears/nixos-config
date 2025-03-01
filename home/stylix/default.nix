@@ -28,6 +28,7 @@
     };
     targets = {
       waybar.enable = false;
+      vscode.enable = false;
     };
   };
 }

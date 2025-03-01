@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 if (yt-dlp -x --audio-format mp3 -o '~/Music/%(title)s.%(ext)s' $(wl-paste)); then
-  hyprctl notify 5 4000 "rgb(0000ff)" " Song saved in ~/Music"
+    notify-send "Download Complete" "Song saved in ~/Music" -t 4000
 else
-  hyprctl notify 3 4000 "rgb(ff0000)" " Error while downloading a song"
+    notify-send "Download Error" "Error while downloading a song" -u critical -t 4000
 fi

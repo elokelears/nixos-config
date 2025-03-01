@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-
 colr=$(hyprpicker -a)
 colr2="${colr:1}"
 if [ "$colr" ]; then
-  hyprctl notify -1 4000 "rgb("$colr2")" " "$colr" copied to clipboard"
+    notify-send "rgb($colr2)" "$colr copied to clipboard" -t 4000
 fi

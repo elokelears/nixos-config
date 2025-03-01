@@ -39,5 +39,6 @@
 
   home.packages = with pkgs; [
     electron
+    polkit_gnome
   ];
 }

@@ -13,8 +13,8 @@
         </object>
 	  </child>
     <child>
-        <object class="GtkMenuItem" id="system-update">
-			<property name="label">  NixOS-Flake update</property>
+        <object class="GtkMenuItem" id="changewallpaper">
+			<property name="label">  Change Wallpaper</property>
         </object>
 	  </child>
     <child>
