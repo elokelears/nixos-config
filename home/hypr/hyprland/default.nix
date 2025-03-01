@@ -63,6 +63,7 @@ in {
             ##################
 
             $mainMod = SUPER
+            bind = $mainMod, M, exec, ./menu.sh
             bind = $mainMod, return, exec, kitty
             bind = $mainMod, Q, killactive,
             bind = $mainMod SHIFT, Q, exec, hyprctl dispatch killactive && sleep 0.1 && pkill -f $(hyprctl activewindow -j | jq -r '.class')
@@ -174,27 +175,27 @@ in {
 
 
             input {
-          # Keyboard: Add a layout and uncomment kb_options for Win+Space switching shortcut
-          kb_layout = us
-          # kb_options = grp:win_space_toggle
-          numlock_by_default = true
-          repeat_delay = 250
-          repeat_rate = 35
+            # Keyboard: Add a layout and uncomment kb_options for Win+Space switching shortcut
+            kb_layout = us
+            # kb_options = grp:win_space_toggle
+            numlock_by_default = true
+            repeat_delay = 250
+            repeat_rate = 35
 
-          touchpad {
+            touchpad {
               natural_scroll = yes
               disable_while_typing = true
               clickfinger_behavior = true
               scroll_factor = 0.5
-          }
-          special_fallthrough = true
-          follow_mouse = 1
-      }
+            }
+            special_fallthrough = true
+            follow_mouse = 1
+            }
 
-      binds {
-          # focus_window_on_workspace_c# For Auto-run stuff see execs.confhange = true
-          scroll_event_delay = 0
-      }
+            binds {
+            # focus_window_on_workspace_c# For Auto-run stuff see execs.confhange = true
+            scroll_event_delay = 0
+            }
 
       gestures {
           workspace_swipe = true

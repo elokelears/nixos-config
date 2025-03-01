@@ -12,4 +12,7 @@
       rofi-power-menu
     ];
   };
+  home.packages = with pkgs; [
+    dmenu
+  ];
 }

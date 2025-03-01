@@ -17,10 +17,11 @@ in {
         "spacing" = 5;
         "margin-bottom" = -11;
         "modules-left" = [
+          "custom/nixos-menu"
           "hyprland/workspaces"
-          "custom/sysmonitor"
+          "group/system"
         ];
-        "modules-center" = ["custom/nixos-menu" "custom/notification" "clock" "idle_inhibitor"];
+        "modules-center" = ["custom/notification" "clock" "idle_inhibitor"];
         "modules-right" = [
           "tray"
           "mpris"
@@ -31,7 +32,7 @@ in {
         ];
 
         "custom/nixos-menu" = {
-          "format" = "<span font=\"18px\">󱄅</span>";
+          "format" = "<span font=\"20px\">󱄅</span>";
           "tooltip" = false;
           "menu" = "on-click";
           "menu-file" = ./nixos-menu.xml;
@@ -57,12 +58,32 @@ in {
           "max-length" = 25;
         };
 
-        "custom/sysmonitor" = {
+        "cpu" = {
           "interval" = 3;
-          "exec" = "${pkgs.bash}/bin/bash ${scriptPath}";
-          "return-type" = "json";
-          "format" = "{}";
+          "format" = " {}% ";
+        };
+
+        "memory" = {
+          "interval" = 3;
+          "format" = " {}% ";
           "on-click" = "kitty -e htop";
+        };
+
+        "disk" = {
+          "interval" = 30;
+          "format" = "󰋊 {percentage_used}% ";
+          "path" = "/";
+        };
+
+        "group/system" = {
+          "orientation" = "horizontal";
+          "modules" = [
+            "cpu"
+            "custom/vertical"
+            "memory"
+            "custom/vertical"
+            "disk"
+          ];
         };
 
         "backlight" = {
@@ -126,14 +147,14 @@ in {
           "on-scroll-down" = "${volumeControl} down";
           "format" = "{icon} {volume}%";
           "format-bluetooth" = "{icon} 󰂰 {volume}%";
-          "format-muted" = "󰖁";
+          "format-muted" = "󰖁 ";
           "format-icons" = {
-            "headphone" = "󱡏";
-            "hands-free" = "";
-            "headset" = "󱡏";
-            "phone" = "";
-            "portable" = "";
-            "car" = "";
+            "headphone" = "󱡏 ";
+            "hands-free" = " ";
+            "headset" = "󱡏 ";
+            "phone" = " ";
+            "portable" = " ";
+            "car" = " ";
             "default" = [
               "󰕿"
               "󰖀"
@@ -145,7 +166,7 @@ in {
         "pulseaudio#microphone" = {
           "format" = "{format_source}";
           "format-source" = " {volume}%";
-          "format-source-muted" = "";
+          "format-source-muted" = " ";
           "on-click" = "pavucontrol -t 4";
         };
 
@@ -154,8 +175,8 @@ in {
           "on-click" = "kitty -e nmtui";
           "tooltip-format" = "{ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}";
           "format-wifi" = "{icon} {signalStrength}%";
-          "format-ethernet" = "󰌘";
-          "format-disconnected" = "󰌙";
+          "format-ethernet" = "󰌘 ";
+          "format-disconnected" = "󰌙 ";
           "format-icons" = [
             "󰤯"
             "󰤟"
@@ -168,7 +189,7 @@ in {
         "bluetooth" = {
           "format" = "";
           "format-connected" = "󰂱 {num_connections}";
-          "format-disabled" = "󰂲";
+          "format-disabled" = "󰂲 ";
           "tooltip-format" = " {device_alias}";
           "tooltip-format-connected" = "{device_enumerate}";
           "tooltip-format-enumerate-connected" = " {device_alias} 󰂄{device_battery_percentage}%";
@@ -186,17 +207,17 @@ in {
           "on-scroll-up" = "${volumeControl} up";
           "on-scroll-down" = "${volumeControl} down";
           "player-icons" = {
-            "chromium" = "";
-            "default" = "";
-            "firefox" = "";
-            "mopidy" = "";
-            "mpv" = "󰐹";
-            "spotify" = "";
-            "vlc" = "󰕼";
+            "chromium" = " ";
+            "default" = " ";
+            "firefox" = " ";
+            "mopidy" = " ";
+            "mpv" = "󰐹 ";
+            "spotify" = " ";
+            "vlc" = "󰕼 ";
           };
           "status-icons" = {
             "paused" = "⏸";
-            "playing" = "";
+            "playing" = " ";
             "stopped" = "";
           };
           "max-length" = 30;
@@ -206,14 +227,14 @@ in {
           "tooltip" = true;
           "format" = "{icon}";
           "format-icons" = {
-            "notification" = "";
-            "none" = "";
-            "dnd-notification" = "";
+            "notification" = " ";
+            "none" = " ";
+            "dnd-notification" = " ";
             "dnd-none" = "";
-            "inhibited-notification" = "";
-            "inhibited-none" = "";
-            "dnd-inhibited-notification" = "";
-            "dnd-inhibited-none" = "";
+            "inhibited-notification" = " ";
+            "inhibited-none" = " ";
+            "dnd-inhibited-notification" = " ";
+            "dnd-inhibited-none" = " ";
           };
           "return-type" = "json";
           "exec-if" = "which swaync-client";
@@ -305,9 +326,24 @@ in {
       }
 
 
-      #mpris,
+      #mpris {
+        background: linear-gradient(to right, #${config.lib.stylix.colors.base0E}, #${config.lib.stylix.colors.base0A}, #${config.lib.stylix.colors.base07});
+        color: #${config.lib.stylix.colors.base00};
+        border-radius: 20px;
+        padding: 4px 10px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-weight: bold;
+        box-shadow: 1px 2px 2px #101010;
+        background-size: 200% 300%;
+        animation: gradient_rv 5s ease infinite;
+
+      }
+
       #network,
-      #custom-sysmonitor {
+      #system {
         background-color: #${config.lib.stylix.colors.base0E};
         color: #${config.lib.stylix.colors.base00};
         border-radius: 20px;
@@ -321,7 +357,7 @@ in {
       }
 
       #tray {
-        background: linear-gradient(45deg, #${config.lib.stylix.colors.base0A} 0%, #${config.lib.stylix.colors.base0F}, #${config.lib.stylix.colors.base0A} 80%, #${config.lib.stylix.colors.base0F} 100%);
+        background: radial-gradient(farthest-side at 60% 55%, #${config.lib.stylix.colors.base0A} 0%,  #${config.lib.stylix.colors.base0F} 100%);
         color: #${config.lib.stylix.colors.base00};
         border-radius: 10px;
         padding: 4px 10px;
@@ -332,7 +368,7 @@ in {
         text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
         box-shadow: 1px 2px 2px #101010;
         background-size: 200% 200%;
-        animation: gradient_f 4s linear infinite;
+        animation: gradient_rv 4s linear infinite;
       }
 
       #custom-cycle_wall {
@@ -349,7 +385,7 @@ in {
       }
 
       #bluetooth {
-        background-color: #${config.lib.stylix.colors.base0C};
+        background: linear-gradient(#${config.lib.stylix.colors.base0C}, #${config.lib.stylix.colors.base07}, #${config.lib.stylix.colors.base0A});
         color: #${config.lib.stylix.colors.base00};
         border-radius: 10px;
         padding: 4px 10px;
@@ -360,10 +396,22 @@ in {
         text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
         box-shadow: 1px 2px 2px #101010;
         background-size: 200% 200%;
-        animation: gradient_f 5s ease infinite;
+        animation: gradient_nh 5s ease infinite;
       }
 
-      #idle_inhibitor,
+      #idle_inhibitor {
+        background-color: #${config.lib.stylix.colors.base0C};
+        color: #${config.lib.stylix.colors.base00};
+        border-radius: 10px;
+        padding: 4px 10px;
+        margin-top: 5px;
+          margin-bottom: 10px;
+          margin-left: 10px;
+          margin-right: 10px;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+        box-shadow: 1px 2px 2px #101010;
+      }
+
       #audio {
         background-color: #${config.lib.stylix.colors.base0C};
         color: #${config.lib.stylix.colors.base00};
@@ -381,7 +429,7 @@ in {
         background-color: #${config.lib.stylix.colors.base0C};
         color: #${config.lib.stylix.colors.base00};
         border-radius: 10px;
-        padding: 4px 13px 4px 10px;
+        padding: 4px 10px 4px 10px;
         margin-top: 5px;
           margin-bottom: 10px;
           margin-left: 10px;
@@ -472,7 +520,7 @@ in {
           margin-bottom: 10px;
           margin-left: 10px;
           margin-right: 10px;
-        border-radius: 8px;
+        border-radius: 20px;
         background-size: 200% 300%;
         animation: gradient_rv 5s ease infinite;
       }

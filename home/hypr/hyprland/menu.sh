@@ -1,26 +1,26 @@
 #!/usr/bin/env bash
-# ~/scripts/nixos-menu.sh
+
 
 # 使用 rofi/wofi 显示与 nixos-menu.xml 相同的选项
-CHOICE=$(echo -e "视频下载\n音乐下载\n颜色拾取器\n截图\n更换壁纸\n退出" | rofi --dmenu)
+CHOICE=$(echo -e " videoDL\ nmusicDL\n colorPicker\n screenShot\n wallpaperChange\n󰩈 exit" | rofi -show -dmenu)
 
 case "$CHOICE" in
-    "视频下载")
-        ~/scripts/video-download.sh
+    " videoDL")
+        ../../waybar/scripts/video-download.sh
         ;;
-    "音乐下载")
-        ~/scripts/song-download.sh
+    " musicDL")
+        ../../waybar/scripts/song-download.sh
         ;;
-    "颜色拾取器")
-        ~/scripts/color-pick.sh
+    " colorPicker")
+        ../../waybar/scripts/color-pick.sh
         ;;
-    "截图")
-        ~/scripts/screenshot.sh
+    " screenShot")
+        ../../waybar/scripts/screenshot.sh
         ;;
-    "更换壁纸")
-        ~/scripts/select-wallpaper.sh
+    " wallpaperChange")
+        ../../waybar/scripts/select-wallpaper.sh
         ;;
-    "退出")
+    "󰩈 exit")
         wlogout -m 260px 70px
         ;;
 esac
