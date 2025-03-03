@@ -5,6 +5,8 @@
 }: let
   rofiThemePath =
     ./style-1.rasi;
+
+  toggle-powerPath = ./toggle-performance.sh;
 in {
   home.pointerCursor = {
     name = lib.mkForce "Bibata-Modern-Ice";
@@ -37,7 +39,7 @@ in {
             ### MONITORS ###
             ################
 
-            monitor = DP-1,3840x2160,auto,2
+            monitor = ,2880x1800@120,auto,2
 
             xwayland {
               force_zero_scaling = true
@@ -100,6 +102,7 @@ in {
             bind = $mainMod, 9, workspace, 9
             bind = $mainMod, 0, workspace, 10
 
+
             # Move active window to a workspace with mainMod + SHIFT + [0-9]
             bind = $mainMod SHIFT, 1, movetoworkspace, 1
             bind = $mainMod SHIFT, 2, movetoworkspace, 2
@@ -134,6 +137,9 @@ in {
             bind = , XF86AudioNext, exec, playerctl next
             bind = , XF86AudioPrev, exec, playerctl previous
             bind = , XF86AudioStop, exec, playerctl stop
+
+            # power-setting
+            bind = , XF86Launch1, exec, ${toggle-powerPath}
 
             # Window rules
             windowrule = float, ^(imv)$
@@ -183,6 +189,7 @@ in {
             repeat_rate = 35
 
             touchpad {
+              tap-to-click = true
               natural_scroll = yes
               disable_while_typing = true
               clickfinger_behavior = true
@@ -200,7 +207,7 @@ in {
       gestures {
           workspace_swipe = true
           workspace_swipe_distance = 700
-          workspace_swipe_fingers = 4
+          workspace_swipe_fingers = 3
           workspace_swipe_cancel_ratio = 0.2
           workspace_swipe_min_speed_to_force = 5
           workspace_swipe_direction_lock = true

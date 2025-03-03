@@ -107,7 +107,7 @@ in {
             "critical" = 15;
           };
           "format" = "{icon} {capacity}%";
-          "format-charging" = "{capacity}%";
+          "format-charging" = " {capacity}%";
           "format-plugged" = "󱘖 {capacity}%";
           "format-alt" = "{icon} {time}";
           "format-full" = "{icon} Full";
@@ -448,6 +448,9 @@ in {
       }
 
       #battery {
+      border-radius: 20px;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+        box-shadow: 1px 2px 2px #101010;
       padding: 4px 10px;
         margin-top: 5px;
           margin-bottom: 10px;

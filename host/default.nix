@@ -73,7 +73,25 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
+  services.libinput = {
+    enable = true;
+    touchpad = {
+      clickMethod = "clickfinger";
+      naturalScrolling = true;
+      tapping = true;
+    };
+  };
+  environment.systemPackages = with pkgs; [
+    libinput
+    # wayland 事件查看器
+    wev
+  ];
+
+  # Enable the power-settings 电源计划
+  services.power-profiles-daemon = {
+    enable = true;
+    package = pkgs.power-profiles-daemon;
+  };
 
   # Define a user account.
   users.users.elokelears = {
@@ -81,7 +99,7 @@
     description = "elokelears";
     home = "/home/elokelears";
     shell = pkgs.zsh;
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "input"];
   };
 
   # Allow unfree packages
