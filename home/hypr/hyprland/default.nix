@@ -7,6 +7,7 @@
     ./style-1.rasi;
 
   toggle-powerPath = ./toggle-performance.sh;
+  screenshotPath = ./screenshot.sh;
 in {
   home.pointerCursor = {
     name = lib.mkForce "Bibata-Modern-Ice";
@@ -140,6 +141,9 @@ in {
 
             # power-setting
             bind = , XF86Launch1, exec, ${toggle-powerPath}
+
+            # screenshot
+            bind = , Print, exec, ${screenshotPath}
 
             # Window rules
             windowrule = float, ^(imv)$
