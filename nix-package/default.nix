@@ -80,23 +80,21 @@ in
     installPhase = ''
       runHook preInstall
 
-      # 主程序安装
-      mkdir -p $out/usr/share/windsurf
-      cp -r usr/share/windsurf/* $out/usr/share/windsurf
+      # Extract and install the application
+      mkdir -p $out/share/windsurf
+      cp -r usr/share/windsurf/* $out/share/windsurf
 
-      # 二进制链接
+      # Create binary symlink
       mkdir -p $out/bin
-      ln -s $out/usr/share/windsurf/windsurf $out/bin/windsurf
+      ln -s $out/share/windsurf/windsurf $out/bin/windsurf
 
-      # 桌面文件
-      mkdir -p $out/share/applications
-      cp ${desktopItems}/share/applications/* $out/share/applications
+      # Copy desktop items (handled by copyDesktopItems)
 
-      # 图标安装
+      # Install icons
       mkdir -p $out/share/icons/hicolor/128x128/apps
       cp ${./windsurf.png} $out/share/icons/hicolor/128x128/apps/windsurf.png
 
-      # Shell补全
+      # Install shell completions
       mkdir -p $out/share/bash-completion/completions
       cp ${./windsurf-bash-completion} $out/share/bash-completion/completions/windsurf
       mkdir -p $out/share/zsh/site-functions
